@@ -23,6 +23,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run: npm i
       - run: npm  run lint
   test:
     # docker:
@@ -30,6 +31,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run: npm i
       - run: npm  run test
   analyze:
     # docker:
@@ -37,5 +39,6 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - run: npm i
       - run: npm  run audit
 
