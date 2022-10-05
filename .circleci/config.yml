@@ -5,6 +5,17 @@ defaults: &defaults
     - image: circleci/node:13.8.0
   working_directory: ~/project
 
+workflows:
+  my_workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - analyze:
+          requires:
+            - test
+
 jobs:
   build:
     # docker:
@@ -27,3 +38,4 @@ jobs:
     steps:
       - checkout
       - run: npm  run audit
+
